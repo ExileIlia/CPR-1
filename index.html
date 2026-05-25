@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'"
+    />
+    <title>Simple Screen Recorder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body class="has-background-dark">
+    <section class="section">
+      <div class="container">
+
+        <!-- Title -->
+        <h1 class="title has-text-white has-text-centered">
+          🎬 Simple Screen Recorder
+        </h1>
+        <p class="subtitle has-text-grey has-text-centered">
+          Кросплатформна програма запису відео з екрана
+        </p>
+
+        <!-- Status bar -->
+        <div class="notification is-dark has-text-centered mb-4" id="statusBar">
+          <span id="statusText">⬤ Очікування вибору джерела...</span>
+          <span id="timerDisplay" class="ml-4 is-hidden has-text-danger">
+            ⏱ <span id="timerValue">00:00</span>
+          </span>
+        </div>
+
+        <!-- Video preview -->
+        <div class="video-wrapper box has-background-black">
+          <video id="videoElement" autoplay muted></video>
+          <!-- Overlay when no source selected -->
+          <div id="noSourceOverlay" class="no-source-overlay">
+            <div class="overlay-content">
+              <span class="overlay-icon">🖥️</span>
+              <p>Оберіть джерело для початку</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="buttons is-centered mt-4">
+          <button id="startBtn" class="button is-primary is-medium" disabled>
+            <span class="icon">▶</span>
+            <span>Старт</span>
+          </button>
+          <button id="stopBtn" class="button is-warning is-medium" disabled>
+            <span class="icon">⏹</span>
+            <span>Стоп</span>
+          </button>
+          <button id="openBtn" class="button is-info is-medium">
+            <span class="icon">📂</span>
+            <span>Відкрити</span>
+          </button>
+        </div>
+
+        <hr class="has-background-grey-darker" />
+
+        <!-- Source selector -->
+        <div class="has-text-centered">
+          <button id="videoSelectBtn" class="button is-text has-text-grey-light">
+            🖥 Вибрати джерело відео
+          </button>
+        </div>
+
+        <!-- Source thumbnails grid -->
+        <div id="sourcesGrid" class="sources-grid mt-4"></div>
+
+        <!-- Recordings list -->
+        <div id="recordingsSection" class="mt-5 is-hidden">
+          <h2 class="subtitle has-text-white">📼 Записи</h2>
+          <div id="recordingsList" class="recordings-list"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <script src="render.js"></script>
+  </body>
+</html>
