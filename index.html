@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>CPU Monitor</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <span class="label">CPU %</span>
+        <span id="cpu" class="value">—</span>
+      </div>
+      <div class="divider"></div>
+      <div class="box">
+        <span class="label">Вільна пам'ять (%)</span>
+        <span id="mem" class="value">—</span>
+      </div>
+      <div class="divider"></div>
+      <div class="box">
+        <span class="label">Всього оперативки (GB)</span>
+        <span id="total-mem" class="value">—</span>
+      </div>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "name": "cpu-monitor",
+  "productName": "CPU Monitor",
+  "version": "1.0.0",
+  "description": "Electron app to monitor CPU and memory usage",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "com.cpumonitor.app",
+    "productName": "CPU Monitor",
+    "win": {
+      "target": ["nsis"],
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "mac": {
+      "target": ["dmg"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    },
+    "nsis": {
+      "uninstallDisplayName": "CPU Monitor",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "ask",
+      "createStartMenuShortcut": true,
+      "menuCategory": true
+    }
+  },
+  "keywords": ["electron", "cpu", "monitor", "system"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.0.0",
+    "@electron-forge/maker-deb": "^7.0.0",
+    "@electron-forge/maker-rpm": "^7.0.0",
+    "@electron-forge/maker-squirrel": "^7.0.0",
+    "@electron-forge/maker-zip": "^7.0.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.0.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "os-utils": "^0.0.14"
+  }
+}
