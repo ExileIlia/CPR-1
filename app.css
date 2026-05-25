@@ -1,0 +1,400 @@
+/* ============================
+   TODO PWA — STYLES
+   ============================ */
+
+:root {
+  --primary: #2c3e50;
+  --primary-light: #34495e;
+  --accent: #3498db;
+  --accent-hover: #2980b9;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --danger-hover: #c0392b;
+  --text: #ecf0f1;
+  --text-muted: #95a5a6;
+  --bg: #1a252f;
+  --bg-card: #2c3e50;
+  --bg-input: #34495e;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --radius: 12px;
+  --transition: 0.25s ease;
+}
+
+/* ---- RESET ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- BASE ---- */
+html {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+/* ---- LAYOUT ---- */
+#app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+  min-height: 100vh;
+}
+
+/* ---- HEADER ---- */
+.header {
+  background: var(--bg-card);
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__title {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.header__icon {
+  font-size: 28px;
+}
+
+/* ---- INSTALL BANNER ---- */
+.install-banner {
+  margin-top: 12px;
+  background: var(--accent);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  animation: slideDown 0.3s ease;
+}
+
+.install-banner.hidden {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- MAIN ---- */
+.main {
+  padding: 24px 16px;
+}
+
+/* ---- INPUT ---- */
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.todo-input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.todo-input::placeholder {
+  color: var(--text-muted);
+}
+
+.todo-input:focus {
+  border-color: var(--accent);
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), transform var(--transition);
+  padding: 10px 18px;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--add {
+  background: var(--accent);
+  color: white;
+  white-space: nowrap;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+.btn--add:hover {
+  background: var(--accent-hover);
+}
+
+.btn--install {
+  background: white;
+  color: var(--accent);
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.btn--close {
+  background: transparent;
+  color: white;
+  padding: 4px 8px;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.btn--close:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btn--clear {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn--clear:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* ---- FILTERS ---- */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* ---- TODO LIST ---- */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 40px;
+}
+
+.todo-item {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition), opacity var(--transition);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item.removing {
+  animation: fadeOut 0.2s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* Checkbox */
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  font-size: 12px;
+}
+
+.todo-item.done .todo-checkbox {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.todo-item.done .todo-checkbox::after {
+  content: "✓";
+  color: white;
+  font-weight: bold;
+}
+
+/* Text */
+.todo-text {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-word;
+  transition: color var(--transition);
+}
+
+.todo-item.done .todo-text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* Delete button */
+.todo-delete {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
+  line-height: 1;
+}
+
+.todo-delete:hover {
+  color: var(--danger);
+  background: rgba(231, 76, 60, 0.15);
+}
+
+/* Empty state */
+.todo-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  font-size: 15px;
+}
+
+.todo-empty__icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ---- FOOTER INFO ---- */
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- OFFLINE NOTICE ---- */
+.offline-notice {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e67e22;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.offline-notice.hidden {
+  display: none;
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 480px) {
+  .header {
+    padding: 16px;
+  }
+
+  .main {
+    padding: 16px 12px;
+  }
+
+  .header__title {
+    font-size: 20px;
+  }
+}

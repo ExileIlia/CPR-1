@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2c3e50" />
+    <meta name="description" content="PWA Todo App — список завдань" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- iOS PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Todo PWA" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <link rel="icon" type="image/png" href="/icons/icon-192x192.png" />
+    <link rel="stylesheet" href="/src/css/app.css" />
+
+    <title>Todo PWA</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1 class="header__title">
+          <span class="header__icon">✅</span>
+          Todo PWA
+        </h1>
+        <div id="install-banner" class="install-banner hidden">
+          <span>Встановити додаток</span>
+          <button id="install-btn" class="btn btn--install">Встановити</button>
+          <button id="install-close" class="btn btn--close">✕</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="input-area">
+          <input
+            type="text"
+            id="todo-input"
+            class="todo-input"
+            placeholder="Додати нове завдання..."
+            maxlength="100"
+          />
+          <button id="add-btn" class="btn btn--add">Додати</button>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Всі</button>
+          <button class="filter-btn" data-filter="active">Активні</button>
+          <button class="filter-btn" data-filter="done">Виконані</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+
+        <div class="footer-info">
+          <span id="items-left">0 завдань</span>
+          <button id="clear-done" class="btn btn--clear">Очистити виконані</button>
+        </div>
+      </main>
+
+      <div id="offline-notice" class="offline-notice hidden">
+        ⚠️ Ви офлайн. Додаток працює в кешованому режимі.
+      </div>
+    </div>
+
+    <script src="/src/js/app.js"></script>
+  </body>
+</html>
